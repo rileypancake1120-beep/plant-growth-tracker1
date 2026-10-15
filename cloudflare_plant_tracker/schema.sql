@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS daily_records (
+  date TEXT PRIMARY KEY,
+  record_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

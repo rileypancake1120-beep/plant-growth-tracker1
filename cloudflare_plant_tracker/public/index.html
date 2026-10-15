@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#245b3b">
+  <title>Plant Growth Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-mark" aria-hidden="true">✿</div>
+      <div>
+        <p class="eyebrow">GARDEN JOURNAL</p>
+        <h1>Plant Growth Tracker</h1>
+        <p class="header-subtitle">A simple place to record, compare, and understand your growing conditions.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro-row">
+      <div>
+        <p class="eyebrow dark-eyebrow">DAILY LOG</p>
+        <h2>Record your observations</h2>
+        <p class="section-subtitle">Add today's weather and a reading for each container.</p>
+      </div>
+      <span class="privacy-pill"><span class="status-dot"></span> Shared tracker</span>
+    </section>
+
+    <section class="card weather-card" aria-labelledby="weather-title">
+      <div class="section-heading">
+        <div class="section-icon" aria-hidden="true">☀</div>
+        <div><h3 id="weather-title">Daily weather</h3><p>Use the day's low and high readings.</p></div>
+      </div>
+      <div class="field date-field">
+        <label for="date">Date</label>
+        <input type="date" id="date" required>
+      </div>
+      <div class="grid weather-grid">
+        <div class="field"><label for="tempLow">Low temperature <span>(°F)</span></label><input type="number" id="tempLow" step="any" placeholder="e.g. 52"></div>
+        <div class="field"><label for="tempHigh">High temperature <span>(°F)</span></label><input type="number" id="tempHigh" step="any" placeholder="e.g. 78"></div>
+        <div class="field"><label for="humidityLow">Low humidity <span>(%)</span></label><input type="number" id="humidityLow" min="0" max="100" step="any" placeholder="e.g. 35"></div>
+        <div class="field"><label for="humidityHigh">High humidity <span>(%)</span></label><input type="number" id="humidityHigh" min="0" max="100" step="any" placeholder="e.g. 70"></div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="container-title">
+      <div class="section-heading">
+        <div class="section-icon" aria-hidden="true">♧</div>
+        <div><h3 id="container-title">Container readings</h3><p>Track soil and plant condition for each container.</p></div>
+      </div>
+      <div id="containers"></div>
+      <button type="button" id="addContainer" class="button button-secondary">＋ Add another container</button>
+      <div class="field notes-field"><label for="dailyNotes">Daily notes <span class="optional">(optional)</span></label><textarea id="dailyNotes" placeholder="Weather changes, general observations, or anything worth remembering…"></textarea></div>
+      <div class="save-panel">
+        <div class="field password-field"><label for="editPassword">Editing password</label><input type="password" id="editPassword" autocomplete="current-password" placeholder="Shared password"></div>
+        <p class="help-text">Readings can be viewed by anyone with the link. The editing password is only used when you save.</p>
+        <button type="button" id="saveRecord" class="button button-primary">Save daily record <span aria-hidden="true">→</span></button>
+        <p id="message" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="history-title">
+      <div class="section-heading">
+        <div class="section-icon" aria-hidden="true">⌁</div>
+        <div><h3 id="history-title">Moisture history</h3><p>Follow soil moisture changes over time.</p></div>
+      </div>
+      <div class="field chart-select"><label for="chartContainer">Container</label><select id="chartContainer"></select></div>
+      <div class="chart-wrap"><canvas id="moistureChart" height="220"></canvas></div>
+    </section>
+
+    <section class="card" aria-labelledby="records-title">
+      <div class="records-heading">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">▤</div>
+          <div><h3 id="records-title">Saved records</h3><p>Your shared history, newest entries first.</p></div>
+        </div>
+        <button type="button" id="exportCsv" class="button button-secondary export-button">↓ Export CSV</button>
+      </div>
+      <div id="records"></div>
+    </section>
+    <footer><span>Plant Growth Tracker</span><span>Keep observing. Keep growing. <span aria-hidden="true">✿</span></span></footer>
+  </main>
+  <script src="/script.js" defer></script>
+</body>
+</html>
